@@ -1,9 +1,11 @@
 const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
-const app = express();
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
+
+const app = express();
+const post = process.env.PORT || 3000;
 
 const publicDirectory = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
@@ -81,6 +83,6 @@ app.get('*', (req, res) => {
     res.render('404', { title: 'Page not found' });
 });
 
-app.listen(3000, () => {
+app.listen(post, () => {
     console.log('App listening on port 3000');
 });
